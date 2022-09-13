@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CloudVandana</title>
+    <link rel="stylesheet" href="assignment1.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+    <div class="row">
+        <div class="column">
+            <table width="100%" border="1" id="tbl">
+                <tr class="tr">
+                    <th>SL.No</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>City</th>
+                    <th>Country</th>
+                <tr class="tr">
+                    <td>1</td>
+                    <td>Nitin</td>
+                    <td>Mishra</td>
+                    <td>Ahmedabad</td>
+                    <td>India</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Anurag</td>
+                    <td>Parmar</td>
+                    <td>Ahmedabad</td>
+                    <td>India</td>
+                </tr>
+                <tr class="tr">
+                    <td>3</td>
+                    <td>Bhupen</td>
+                    <td>Pandav</td>
+                    <td>Ahmedabad</td>
+                    <td>India</td>
+                </tr class="tr">
+                <tr class="tr" class="tr">
+                    <td>4</td>
+                    <td>Arpit</td>
+                    <td>Vaghela</td>
+                    <td>Ahmedabad</td>
+                    <td>India</td>
+                </tr>
+                </tr>
+            </table>
+        </div>
+
+
+        <div class="column">
+            <div id="container">
+                <form class="myForm">
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="fname">First Name</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="fname" name="firstname" placeholder="Your first name..">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="lname">Last Name</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="city">City</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="city" name="city" placeholder="City">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="country">Country</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="country" name="country" placeholder="Country">
+                        </div>
+                    </div>
+                    <br>
+                </form>
+                <div onclick="appendRow()" class="btn1">
+                    <button><b>Add row to bottom</b></button>
+                </div>
+                <div onclick="appendRowTop()">
+                    <button class="btn2"><b>Add row to top</b></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+
+<script>
+    function appendRow() {
+        try {
+            let Fname = document.getElementById('fname').value;
+            let Lname = document.getElementById('lname').value;
+            let City = document.getElementById('city').value;
+            let Country = document.getElementById('country').value;
+            let cell, firstRow, row;
+            let table = document.getElementById("tbl");
+            firstRow = table.rows[0];
+            row = table.insertRow(-1);
+            row.className = "tr";
+            cell = row.insertCell(-1);
+            cell.innerHTML = (table.rows.length - 1);
+            for (let i = 1; i < firstRow.cells.length; i++) {
+                cell = row.insertCell(-1)
+                switch (i) {
+                    case 1:
+                        cell.innerHTML = Fname;
+                        break;
+                    case 2:
+                        cell.innerHTML = Lname;
+                        break;
+                    case 3:
+                        cell.innerHTML = City;
+                        break;
+                    case 4:
+                        cell.innerHTML = Country;
+                        break;
+                }
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    function appendRowTop() {
+        let Fname = document.getElementById('fname').value;
+        let Lname = document.getElementById('lname').value;
+        let City = document.getElementById('city').value;
+        let Country = document.getElementById('country').value;
+        let cell, firstRow, row;
+        let table = document.getElementById("tbl");
+        firstRow = table.rows[0];
+        row = table.insertRow(1);
+        row.className = "tr";
+        cell = row.insertCell(-1);
+        cell.innerHTML = "1";
+        for (let i = 1; i < firstRow.cells.length; i++) {
+            cell = row.insertCell(-1)
+            switch (i) {
+                case 1:
+                    cell.innerHTML = Fname;
+                    break;
+                case 2:
+                    cell.innerHTML = Lname;
+                    break;
+                case 3:
+                    cell.innerHTML = City;
+                    break;
+                case 4:
+                    cell.innerHTML = Country;
+                    break;
+            }
+        }
+        for (let i = 2; i < table.rows.length; i++) {
+            table.rows[i].cells[0].innerHTML = i;
+        }
+    }
+</script>
+</body>
+
+
+</html>

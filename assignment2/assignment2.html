@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CloudVandana</title>
+    <link rel="stylesheet" href="assignment2.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div id="container">
+        <form class="myForm">
+            <div class="row">
+                <div class="col-25">
+                    <label for="fname">Enter some text</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="text" name="text" placeholder=" Some text....">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="lname">Enter any alphabet to slice</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="alpha" name="alpha" placeholder="Any alphabet.">
+                </div>
+            </div>
+        </form>
+        <div onclick="crop()" class="btn1">
+            <button><b>Slice</b></button>
+        </div>
+        <div id="text1" class="return">
+            Here is the sliced scentence
+            <p id="data"></p>
+        </div>
+        <script>
+            var x = document.getElementById("text1");
+            x.style.display = "none";
+
+            function crop() {
+
+
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+                let input1 = document.getElementById("text").value
+                let input2 = document.getElementById("alpha").value
+                let length = input1.length;
+                let cropped;
+                for (let i = 0; i < length; i++) {
+                    if (input1[i] == input2) {
+                        cropped = input1.slice(i + 1, length)
+                        break
+                    }
+                    else if (input1[i] != input2) {
+                        cropped = "The letter does not exist in the sentence"
+                        break
+                    }
+
+                }
+                console.log(cropped)
+                if (cropped == undefined) {
+                    cropped = "Please enter some text to slice"
+                }
+                document.getElementById("data").innerHTML = cropped;
+            }
+        </script>
+</body>
+
+</html>
